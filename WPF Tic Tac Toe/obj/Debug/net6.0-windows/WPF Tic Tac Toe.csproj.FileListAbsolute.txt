@@ -1,0 +1,27 @@
+D:\Kuliah\Semester 7\Pemrograman Lanjut\UTS\WPF Tic Tac Toe\WPF Tic Tac Toe\bin\Debug\net6.0-windows\WPF Tic Tac Toe.exe
+D:\Kuliah\Semester 7\Pemrograman Lanjut\UTS\WPF Tic Tac Toe\WPF Tic Tac Toe\bin\Debug\net6.0-windows\WPF Tic Tac Toe.deps.json
+D:\Kuliah\Semester 7\Pemrograman Lanjut\UTS\WPF Tic Tac Toe\WPF Tic Tac Toe\bin\Debug\net6.0-windows\WPF Tic Tac Toe.runtimeconfig.json
+D:\Kuliah\Semester 7\Pemrograman Lanjut\UTS\WPF Tic Tac Toe\WPF Tic Tac Toe\bin\Debug\net6.0-windows\WPF Tic Tac Toe.dll
+D:\Kuliah\Semester 7\Pemrograman Lanjut\UTS\WPF Tic Tac Toe\WPF Tic Tac Toe\bin\Debug\net6.0-windows\WPF Tic Tac Toe.pdb
+D:\Kuliah\Semester 7\Pemrograman Lanjut\UTS\WPF Tic Tac Toe\WPF Tic Tac Toe\obj\Debug\net6.0-windows\WPF Tic Tac Toe.csproj.AssemblyReference.cache
+D:\Kuliah\Semester 7\Pemrograman Lanjut\UTS\WPF Tic Tac Toe\WPF Tic Tac Toe\obj\Debug\net6.0-windows\App.g.cs
+D:\Kuliah\Semester 7\Pemrograman Lanjut\UTS\WPF Tic Tac Toe\WPF Tic Tac Toe\obj\Debug\net6.0-windows\WPF Tic Tac Toe_MarkupCompile.cache
+D:\Kuliah\Semester 7\Pemrograman Lanjut\UTS\WPF Tic Tac Toe\WPF Tic Tac Toe\obj\Debug\net6.0-windows\WPF Tic Tac Toe_MarkupCompile.lref
+D:\Kuliah\Semester 7\Pemrograman Lanjut\UTS\WPF Tic Tac Toe\WPF Tic Tac Toe\obj\Debug\net6.0-windows\WPF Tic Tac Toe.g.resources
+D:\Kuliah\Semester 7\Pemrograman Lanjut\UTS\WPF Tic Tac Toe\WPF Tic Tac Toe\obj\Debug\net6.0-windows\WPF Tic Tac Toe.GeneratedMSBuildEditorConfig.editorconfig
+D:\Kuliah\Semester 7\Pemrograman Lanjut\UTS\WPF Tic Tac Toe\WPF Tic Tac Toe\obj\Debug\net6.0-windows\WPF Tic Tac Toe.AssemblyInfoInputs.cache
+D:\Kuliah\Semester 7\Pemrograman Lanjut\UTS\WPF Tic Tac Toe\WPF Tic Tac Toe\obj\Debug\net6.0-windows\WPF Tic Tac Toe.AssemblyInfo.cs
+D:\Kuliah\Semester 7\Pemrograman Lanjut\UTS\WPF Tic Tac Toe\WPF Tic Tac Toe\obj\Debug\net6.0-windows\WPF Tic Tac Toe.csproj.CoreCompileInputs.cache
+D:\Kuliah\Semester 7\Pemrograman Lanjut\UTS\WPF Tic Tac Toe\WPF Tic Tac Toe\obj\Debug\net6.0-windows\WPF Tic Tac Toe.dll
+D:\Kuliah\Semester 7\Pemrograman Lanjut\UTS\WPF Tic Tac Toe\WPF Tic Tac Toe\obj\Debug\net6.0-windows\refint\WPF Tic Tac Toe.dll
+D:\Kuliah\Semester 7\Pemrograman Lanjut\UTS\WPF Tic Tac Toe\WPF Tic Tac Toe\obj\Debug\net6.0-windows\WPF Tic Tac Toe.pdb
+D:\Kuliah\Semester 7\Pemrograman Lanjut\UTS\WPF Tic Tac Toe\WPF Tic Tac Toe\obj\Debug\net6.0-windows\WPF Tic Tac Toe.genruntimeconfig.cache
+D:\Kuliah\Semester 7\Pemrograman Lanjut\UTS\WPF Tic Tac Toe\WPF Tic Tac Toe\obj\Debug\net6.0-windows\ref\WPF Tic Tac Toe.dll
+D:\Kuliah\Semester 7\Pemrograman Lanjut\UTS\WPF Tic Tac Toe\WPF Tic Tac Toe\obj\Debug\net6.0-windows\Game-Page.g.cs
+D:\Kuliah\Semester 7\Pemrograman Lanjut\UTS\WPF Tic Tac Toe\WPF Tic Tac Toe\obj\Debug\net6.0-windows\HomePage.g.cs
+D:\Kuliah\Semester 7\Pemrograman Lanjut\UTS\WPF Tic Tac Toe\WPF Tic Tac Toe\obj\Debug\net6.0-windows\Game-Page.baml
+D:\Kuliah\Semester 7\Pemrograman Lanjut\UTS\WPF Tic Tac Toe\WPF Tic Tac Toe\obj\Debug\net6.0-windows\HomePage.baml
+D:\Kuliah\Semester 7\Pemrograman Lanjut\UTS\WPF Tic Tac Toe\WPF Tic Tac Toe\obj\Debug\net6.0-windows\Setting-Page.g.cs
+D:\Kuliah\Semester 7\Pemrograman Lanjut\UTS\WPF Tic Tac Toe\WPF Tic Tac Toe\obj\Debug\net6.0-windows\Setting-Page.baml
+D:\Kuliah\Semester 7\Pemrograman Lanjut\UTS\WPF Tic Tac Toe\WPF Tic Tac Toe\obj\Debug\net6.0-windows\WPF_Tic_Tac_Toe.Properties.Resources.resources
+D:\Kuliah\Semester 7\Pemrograman Lanjut\UTS\WPF Tic Tac Toe\WPF Tic Tac Toe\obj\Debug\net6.0-windows\WPF Tic Tac Toe.csproj.GenerateResource.cache
