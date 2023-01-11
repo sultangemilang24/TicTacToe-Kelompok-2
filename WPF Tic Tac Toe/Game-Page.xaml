@@ -76,8 +76,6 @@
                 </Setter.Value>
             </Setter>
         </Style>
-        <SolidColorBrush x:Key="Button.Static.Background" Color="#FFDDDDDD"/>
-        <SolidColorBrush x:Key="Button.Static.Border" Color="#FF707070"/>
         <SolidColorBrush x:Key="Button.MouseOver.Background" Color="#FFBEE6FD"/>
         <SolidColorBrush x:Key="Button.MouseOver.Border" Color="#FF3C7FB1"/>
         <SolidColorBrush x:Key="Button.Pressed.Background" Color="#FFC4E5F6"/>
@@ -87,12 +85,11 @@
         <SolidColorBrush x:Key="Button.Disabled.Foreground" Color="#FF838383"/>
         <Style x:Key="ButtonStyle1" TargetType="{x:Type Button}">
             <Setter Property="FocusVisualStyle" Value="{StaticResource FocusVisual}"/>
-            <Setter Property="Background" Value="{StaticResource Button.Static.Background}"/>
-            <Setter Property="BorderBrush" Value="{StaticResource Button.Static.Border}"/>
+            <Setter Property="Background" Value="{x:Null}"/>
+            <Setter Property="BorderBrush" Value="{x:Null}"/>
             <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}"/>
             <Setter Property="BorderThickness" Value="1"/>
-            <Setter Property="HorizontalContentAlignment" Value="Center"/>
-            <Setter Property="VerticalContentAlignment" Value="Center"/>
+            <Setter Property="VerticalAlignment" Value="Bottom"/>
             <Setter Property="Padding" Value="1"/>
             <Setter Property="Template">
                 <Setter.Value>
@@ -134,10 +131,20 @@
             <Setter Property="FontSize" Value="120"/>
             <Setter Property="FontFamily" Value="Consolas"/>
         </Style>
+
+        <Style x:Key="FormSaveGame" TargetType="{x:Type Border}">
+            <Setter Property="CornerRadius" Value="25,25,25,25"/>
+            <Setter Property="Effect">
+                <Setter.Value>
+                    <DropShadowEffect BlurRadius="20" Direction ="-90" RenderingBias ="Quality" ShadowDepth =".7" Color ="Black"/>
+                </Setter.Value>
+            </Setter>
+        </Style>
     </Window.Resources>
 
-    <Grid >
+    <Grid>
 
+        <!-- Player Score -->
         <Grid HorizontalAlignment="Center" VerticalAlignment="Top" Width="450" Height="90" Margin="0,23,0,0" >
             <Grid HorizontalAlignment="Left" VerticalAlignment="Center" Width="190" Height="100">
                 <Border BorderBrush="#FF1D3557" Width="90" Height="90" Background="#FF1D3557" HorizontalAlignment="Left" VerticalAlignment="Center" CornerRadius="15,15,15,15">
@@ -159,6 +166,7 @@
 
         </Grid>
 
+        <!-- Player Playing Board -->
         <Grid x:Name="PlayingBoard" HorizontalAlignment="Center" VerticalAlignment="Top" Height="390" Width="480" Margin="0,134,0,0" Background="#FF1D3557">
 
             <Button x:Name="btn1" Style="{DynamicResource btPlaying}" HorizontalAlignment="Left" VerticalAlignment="Top" Height="120" Width="155" Margin="7,7,0,0"/>
@@ -177,17 +185,95 @@
 
         </Grid>
 
-        <Grid HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="0,0,0,25" Height="120" Width="534">
-            <Button Style="{DynamicResource ButtonStyle2}" Content="New Game" Background="#FFFF2F41" Foreground="#FFF9FEFF" HorizontalAlignment="Left" VerticalAlignment="Top" Click="btn_NewGame"/>
-            <Button Style="{DynamicResource ButtonStyle2}" Content="Save Game" Background="#FF1D3557" Foreground="#FFF9FEFF" HorizontalAlignment="Right" VerticalAlignment="Top"/>
-            <Button Style="{DynamicResource ButtonStyle2}" Content="High Score" Background="#F9FEFF" Foreground="#1D3557"  HorizontalAlignment="Center" VerticalAlignment="Bottom" />
+        <!-- Pop Up Save Game -->
+        <Grid x:Name="SaveMenu" VerticalAlignment="Center" HorizontalAlignment="Center" Width="720" Height="560" Panel.ZIndex="1" Visibility="Hidden">
+            <Border Style="{DynamicResource FormSaveGame}">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="1*"/>
+                        <ColumnDefinition Width="1*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="0.75*" />
+                        <RowDefinition Height="0.25*" />
+                    </Grid.RowDefinitions>
+
+                    <Border Grid.RowSpan="3" Background="#FF1D3557" CornerRadius="25,0,0,25"/>
+                    <Border Grid.Column="1" Grid.RowSpan="3" Background="#FFFF2F41" CornerRadius="0,25,25,0"/>
+
+                    <!-- Player Score -->
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="0.5*"/>
+                            <RowDefinition Height="0.5*"/>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+                        <TextBlock Text="Player X" Foreground="White" FontFamily="Consolas" FontSize="70" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        <TextBlock Grid.Row="1" Text="Score" Foreground="White" FontFamily="Consolas" FontSize="70" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        <Border Grid.Row="2" CornerRadius="15,15,15,15" Background="White" Height="100" Width="300" HorizontalAlignment="Center" VerticalAlignment="Center">
+                            <Label x:Name="PlayerX_SaveGameScore" Content="" Foreground="#FFFF2F41" FontFamily="Consolas" FontSize="80" FontWeight="Bold" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+                        </Border>
+                    </Grid>
+
+                    <Grid Grid.Column="1">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="0.5*"/>
+                            <RowDefinition Height="0.5*"/>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+                        <TextBlock Text="Player O" Foreground="White" FontFamily="Consolas" FontSize="70" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        <TextBlock Grid.Row="1" Text="Score" Foreground="White" FontFamily="Consolas" FontSize="70" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        <Border Grid.Row="2" CornerRadius="15,15,15,15" Background="White" Height="100" Width="300" HorizontalAlignment="Center" VerticalAlignment="Center">
+                            <Label x:Name="PlayerO_SaveGameScore" Content="" Foreground="#FF1D3557" FontFamily="Consolas" FontSize="80" FontWeight="Bold" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+                        </Border>
+                    </Grid>
+
+                    <!-- Input Name -->
+                    <Grid Grid.Row="1">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="0.75*"/>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+                        <TextBlock Text="Input Name" Foreground="White" FontFamily="Consolas" FontSize="50" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        <Border Grid.Row="1" CornerRadius="18,18,18,18" Background="White" Height="100" Width="300" HorizontalAlignment="Center">
+                            <TextBox x:Name="XName" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="#FFFF2F41" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontFamily="Consolas" FontSize="24" TextWrapping="Wrap"/>
+                        </Border>
+                    </Grid>
+                    <Grid Grid.Row="1" Grid.Column="1">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="0.75*"/>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+                        <TextBlock Text="Input Name" Foreground="White" FontFamily="Consolas" FontSize="50" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        <Border Grid.Row="1" CornerRadius="18,18,18,18" Background="White" Height="100" Width="300" HorizontalAlignment="Center">
+                            <TextBox x:Name="OName" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="#FFFF2F41" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontFamily="Consolas" FontSize="24" TextWrapping="Wrap"/>
+                        </Border>
+                    </Grid>
+
+                    <!-- Button Cancel Save -->
+                    <Border Grid.Row="2" CornerRadius="18,18,18,18" Background="#FFFF2F41" Width="150" Height="50" HorizontalAlignment="Left" Margin="50,0,0,0">
+                        <Button Background="{x:Null}" Foreground="White" BorderBrush="{x:Null}" Content="Cencel" FontSize="36" FontWeight="Bold" FontFamily="Consolas" Click="Button_Click_CencelSave"/>
+                    </Border>
+                    <Border Grid.Column="1" Grid.Row="2" CornerRadius="18,18,18,18" Background="#FF1D3557" Width="150" Height="50" HorizontalAlignment="Right" Margin="0,0,50,0">
+                        <Button Background="{x:Null}" Foreground="White" BorderBrush="{x:Null}" Content="Save" FontSize="36" FontWeight="Bold" FontFamily="Consolas" Click="Button_Click_Save"/>
+                    </Border>
+                </Grid>
+            </Border>
         </Grid>
 
-        <Button Style="{DynamicResource ButtonStyle1}" HorizontalAlignment="Left" Height="80" Width="80"  Margin="20,0,0,20" VerticalAlignment="Bottom" BorderBrush="{x:Null}" Background="{x:Null}" Click="btn_Back1_Click">
+        <!-- Button Bottom Form -->
+        <Grid HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="0,0,0,25" Height="120" Width="534">
+            <Button Style="{DynamicResource ButtonStyle2}" Content="New Game" Background="#FFFF2F41" Foreground="#FFF9FEFF" HorizontalAlignment="Left" VerticalAlignment="Top" Click="Button_Click_NewGame"/>
+            <Button Style="{DynamicResource ButtonStyle2}" Content="Save Game" Background="#FF1D3557" Foreground="#FFF9FEFF" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="301,0,0,0" Click="Button_Click"/>
+            <Button x:Name="btnHighScore" Style="{DynamicResource ButtonStyle2}" Content="High Score" Background="#F9FEFF" Foreground="#1D3557"  HorizontalAlignment="Center" VerticalAlignment="Bottom" />
+        </Grid>
+
+        <Button x:Name="btnBack" Style="{DynamicResource ButtonStyle1}" HorizontalAlignment="Left" Height="80" Width="80"  Margin="20,0,0,20" Click="btn_Click_Back">
             <Image Source="img/back.png"/>
         </Button>
 
-        <Button Style="{DynamicResource ButtonStyle1}" HorizontalAlignment="Right" Height="70" Width="70" Margin="0,0,20,20" VerticalAlignment="Bottom" BorderBrush="{x:Null}" Background="{x:Null}" Click="btn_Setting_Click">
+        <Button x:Name="btnSetting" Style="{DynamicResource ButtonStyle1}" HorizontalAlignment="Right" Height="70" Width="70" Margin="0,0,20,20" Click="btn_Setting_Click">
             <Image Source="img/setting.png"/>
         </Button>
 

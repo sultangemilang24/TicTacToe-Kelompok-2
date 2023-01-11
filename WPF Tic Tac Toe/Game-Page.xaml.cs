@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Data.SqlClient;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -16,14 +18,15 @@ namespace WPF_Tic_Tac_Toe
 {
     public partial class Game_Page : Window
     {
+        Game_Logic _GameLogic = new Game_Logic();
+        private int xWinsCount = 0;
+        private int oWinsCount = 0;
+        SqlConnection connection = new SqlConnection(@"Data Source=DESKTOP-9FBPJJP\SQLEXPRESS;Initial Catalog=WPFTicTacToe;Integrated Security=True");
+
         public Game_Page()
         {
             InitializeComponent();
         }
-
-        Game_Logic _GameLogic = new Game_Logic();
-        private int xWinsCount = 0;
-        private int oWinsCount = 0;
 
         private void PlayingClick(object sender, RoutedEventArgs e)
         {
@@ -118,14 +121,14 @@ namespace WPF_Tic_Tac_Toe
             Close();
         }
         
-        private void btn_Back1_Click(object sender, RoutedEventArgs e)
+        private void btn_Click_Back(object sender, RoutedEventArgs e)
         {
             MainWindow mainWindow = new MainWindow();
             mainWindow.Show();
             Close();
         }
 
-        private void btn_NewGame(object sender, RoutedEventArgs e)
+        private void Button_Click_NewGame(object sender, RoutedEventArgs e)
         {
             if (MessageBox.Show("Are you Sure to Restart the Game ?", "Question", MessageBoxButton.YesNo, MessageBoxImage.Warning) == MessageBoxResult.Yes)
             {
@@ -137,6 +140,109 @@ namespace WPF_Tic_Tac_Toe
                 lboWin.Content = $"{oWinsCount}";
             }
             else return;
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            PlayerX_SaveGameScore.Content = xWinsCount;
+            PlayerO_SaveGameScore.Content = oWinsCount;
+
+            SaveMenu.Visibility = Visibility.Visible;
+
+            btnBack.IsHitTestVisible = false;
+            btnHighScore.IsHitTestVisible = false;
+            btnSetting.IsHitTestVisible = false;
+        }
+
+        public bool IsValid()
+        {
+            if (XName.Text == String.Empty)
+            {
+                MessageBox.Show("Please Insert X Name!", "Failed", MessageBoxButton.OK, MessageBoxImage.Error);
+                return false;
+            }
+            else if (OName.Text == String.Empty)
+            {
+                MessageBox.Show("Please Insert O Name!", "Failed", MessageBoxButton.OK, MessageBoxImage.Error);
+                return false;
+            }
+            else return true;
+        }
+
+        private void Button_Click_Save(object sender, RoutedEventArgs e)
+        {
+            if (IsValid())
+            {
+                connection.Open();
+                if (xWinsCount > 0)
+                {
+                    SqlCommand insertX = new SqlCommand("INSERT INTO HighScore VALUES (@name, @xScore, NULL)", connection);
+                    insertX.CommandType = CommandType.Text;
+                    insertX.Parameters.AddWithValue("@name", XName.Text);
+                    insertX.Parameters.AddWithValue("@xScore", xWinsCount);
+
+                    insertX.ExecuteNonQuery();
+
+                    if (oWinsCount > 0)
+                    {
+                        SqlCommand insertO = new SqlCommand("INSERT INTO HighScore VALUES (@name, NULL, @oScore)", connection);
+                        insertO.CommandType = CommandType.Text;
+                        insertO.Parameters.AddWithValue("@name", OName.Text);
+                        insertO.Parameters.AddWithValue("@oScore", oWinsCount);
+
+                        insertO.ExecuteNonQuery();
+                    }
+
+                    MessageBox.Show("Your score has ben Saved", "Succesfull", MessageBoxButton.OK, MessageBoxImage.Information);
+
+                }
+                else if (oWinsCount > 0)
+                {
+                    SqlCommand insertO = new SqlCommand("INSERT INTO HighScore VALUES (@name, NULL, @oScore)", connection);
+                    insertO.CommandType = CommandType.Text;
+                    insertO.Parameters.AddWithValue("@name", OName.Text);
+                    insertO.Parameters.AddWithValue("@oScore", oWinsCount);
+                                       
+                    insertO.ExecuteNonQuery();
+
+                    MessageBox.Show("Your score has ben Saved", "Succesfull", MessageBoxButton.OK, MessageBoxImage.Information);
+                }
+                else
+                {
+                    MessageBox.Show("Sorry, maybe we can't input your data because both of you dont have score", "Attention", MessageBoxButton.OK, MessageBoxImage.Information);
+                }
+
+                connection.Close();
+
+                SaveMenu.Visibility = Visibility.Hidden;
+
+                XName.Clear();
+                OName.Clear();
+
+                btnBack.IsHitTestVisible = true;
+                btnHighScore.IsHitTestVisible = true;
+                btnSetting.IsHitTestVisible = true;
+
+                ResetButton();
+                _GameLogic.NewGame();
+
+                xWinsCount = 0;
+                oWinsCount = 0;
+                lbxWin.Content = $"{xWinsCount}";
+                lboWin.Content = $"{oWinsCount}";
+            }
+        }
+
+        private void Button_Click_CencelSave(object sender, RoutedEventArgs e)
+        {
+            SaveMenu.Visibility = Visibility.Hidden;
+
+            XName.Clear();
+            OName.Clear();
+
+            btnBack.IsHitTestVisible = true;
+            btnHighScore.IsHitTestVisible = true;
+            btnSetting.IsHitTestVisible = true;
         }
     }
 }
