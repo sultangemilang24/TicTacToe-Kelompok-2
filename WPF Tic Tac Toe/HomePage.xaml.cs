@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Media;
 
 namespace WPF_Tic_Tac_Toe
 {
@@ -28,6 +29,8 @@ namespace WPF_Tic_Tac_Toe
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             Game_Page Game_Page = new Game_Page();
+            SoundPlayer sfx = new SoundPlayer(@".\sound\Click.wav");
+            sfx.Play();
             Game_Page.Show();
             Close();
         }
@@ -35,8 +38,17 @@ namespace WPF_Tic_Tac_Toe
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
             Setting_Page Setting_Page = new Setting_Page();
+            SoundPlayer sfx = new SoundPlayer(@".\sound\Click.wav");
+            sfx.Play();
             Setting_Page.Show();
             Close();
+        }
+
+        private void HomPage_Load(object sender, RoutedEventArgs e)
+        {
+            SoundPlayer sp = new SoundPlayer();
+            sp.SoundLocation = @".\sound\POL-full-hand-short.wav";
+            sp.PlayLooping();
         }
     }
 }

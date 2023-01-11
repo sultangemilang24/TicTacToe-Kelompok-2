@@ -13,6 +13,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using System.Media;
 
 namespace WPF_Tic_Tac_Toe
 {
@@ -171,6 +172,9 @@ namespace WPF_Tic_Tac_Toe
 
         private void Button_Click_Save(object sender, RoutedEventArgs e)
         {
+            SoundPlayer sfx = new SoundPlayer(@".\sound\Click.wav");
+            sfx.Play();
+
             if (IsValid())
             {
                 connection.Open();
@@ -243,6 +247,13 @@ namespace WPF_Tic_Tac_Toe
             btnBack.IsHitTestVisible = true;
             btnHighScore.IsHitTestVisible = true;
             btnSetting.IsHitTestVisible = true;
+        }
+
+        private void GamePage_Load(object sender, RoutedEventArgs e)
+        {
+            SoundPlayer sp = new SoundPlayer();
+            sp.SoundLocation = @".\sound\POL-full-hand-short.wav";
+            sp.PlayLooping();
         }
     }
 }
