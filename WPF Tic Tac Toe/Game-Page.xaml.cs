@@ -22,7 +22,7 @@ namespace WPF_Tic_Tac_Toe
         Game_Logic _GameLogic = new Game_Logic();
         private int xWinsCount = 0;
         private int oWinsCount = 0;
-        SqlConnection connection = new SqlConnection(@"Data Source=DESKTOP-9FBPJJP\SQLEXPRESS;Initial Catalog=WPFTicTacToe;Integrated Security=True");
+        SqlConnection connection = new SqlConnection(@"Data Source=DESKTOP-400SBU6\SQLEXPRESS;Initial Catalog=WPFTicTacToe;Integrated Security=True");
 
         public Game_Page()
         {
@@ -36,6 +36,9 @@ namespace WPF_Tic_Tac_Toe
             bt.Content = _GameLogic.CurrentPlayer;
             bt.IsEnabled = false;
             bt.Foreground = Brushes.Black;
+
+            SoundPlayer sfx = new SoundPlayer(@".\sound\Click.wav");
+            sfx.Play();
 
             GameOver(bt.Content.ToString());
 

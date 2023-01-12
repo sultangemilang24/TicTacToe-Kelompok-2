@@ -24,6 +24,10 @@ namespace WPF_Tic_Tac_Toe
         public MainWindow()
         {
             InitializeComponent();
+
+            SoundPlayer sp = new SoundPlayer();
+            sp.SoundLocation = @".\sound\POL-full-hand-short.wav";
+            sp.PlayLooping();
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
@@ -38,17 +42,15 @@ namespace WPF_Tic_Tac_Toe
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
             Setting_Page Setting_Page = new Setting_Page();
-            SoundPlayer sfx = new SoundPlayer(@".\sound\Click.wav");
-            sfx.Play();
+            //SoundPlayer sfx = new SoundPlayer(@".\sound\Click.wav");
+            //sfx.Play();
             Setting_Page.Show();
             Close();
         }
 
         private void HomPage_Load(object sender, RoutedEventArgs e)
         {
-            SoundPlayer sp = new SoundPlayer();
-            sp.SoundLocation = @".\sound\POL-full-hand-short.wav";
-            sp.PlayLooping();
+            
         }
     }
 }
