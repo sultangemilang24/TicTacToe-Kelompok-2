@@ -8,7 +8,6 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("sound/click.wav")]
 [assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("sound/pol-full-hand-short.wav")]
 
 

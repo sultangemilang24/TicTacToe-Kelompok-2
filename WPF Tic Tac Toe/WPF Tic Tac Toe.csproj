@@ -8,21 +8,28 @@
     <UseWPF>true</UseWPF>
   </PropertyGroup>
 
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <DebugType>embedded</DebugType>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <DebugType>embedded</DebugType>
+  </PropertyGroup>
+
   <ItemGroup>
     <Compile Remove="App.xaml.cs" />
   </ItemGroup>
 
   <ItemGroup>
-    <None Remove="sound\Click.wav" />
+    <None Remove="back.png" />
+    <None Remove="img\back.png" />
+    <None Remove="img\sounddisable.png" />
   </ItemGroup>
 
   <ItemGroup>
-    <Content Include="sound\Click.wav">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="sound\POL-full-hand-short.wav">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
+    <Resource Include="sound\POL-full-hand-short.wav">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
   </ItemGroup>
 
   <ItemGroup>
@@ -48,6 +55,7 @@
     <Resource Include="img\sound.png">
       <CopyToOutputDirectory></CopyToOutputDirectory>
     </Resource>
+    <Resource Include="img\sounddisable.png" />
   </ItemGroup>
 
   <ItemGroup>
@@ -75,6 +83,10 @@
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Resources\" />
   </ItemGroup>
 
 </Project>

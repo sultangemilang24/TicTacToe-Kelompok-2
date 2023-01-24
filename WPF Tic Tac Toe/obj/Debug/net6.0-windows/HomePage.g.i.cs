@@ -53,7 +53,7 @@ namespace WPF_Tic_Tac_Toe {
                 return;
             }
             _contentLoaded = true;
-            System.Uri resourceLocater = new System.Uri("/WPF Tic Tac Toe;V1.0.0.0;component/homepage.xaml", System.UriKind.Relative);
+            System.Uri resourceLocater = new System.Uri("/WPF Tic Tac Toe;component/homepage.xaml", System.UriKind.Relative);
             
             #line 1 "..\..\..\HomePage.xaml"
             System.Windows.Application.LoadComponent(this, resourceLocater);

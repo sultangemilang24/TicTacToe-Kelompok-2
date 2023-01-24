@@ -88,7 +88,8 @@
 
             <Grid HorizontalAlignment="Center" Margin="0,0,0,0" VerticalAlignment="Top" Height="74" Width="259">
                 <Button Style="{DynamicResource ButtonStyle2}" Content="Music" HorizontalAlignment="Center" Height="74" Width="259" VerticalAlignment="Top" Background="#FFFF2F41" BorderBrush="{x:Null}" Foreground="#FFF9FEFF" FontSize="43" FontFamily="Consolas" FontWeight="Bold" HorizontalContentAlignment="Left" Padding="16,1,1,1" Click="btn_Music_Clic"/>
-                <Image Source="img/music.png" Width="53" Height="53" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0,0,25,0"/>
+                <Image x:Name="imgEnable" Source="img/sound.png" Width="53" Height="53" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0,0,25,0"/>
+                <Image x:Name="imgDisable" Source="img/sounddisable.png" Width="53" Height="53" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0,0,25,0" Visibility="Hidden"/>
             </Grid>
 
         </Grid>

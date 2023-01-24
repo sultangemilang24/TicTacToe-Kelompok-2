@@ -47,11 +47,11 @@
                 </Grid>
                 <Grid Grid.Row="1">
                     <Border Height="510" Width="660" VerticalAlignment="Top" Background="White" CornerRadius="0,0,15,15" BorderBrush="{x:Null}">
-                        <DataGrid x:Name="xScoreDataGrid" Background="{x:Null}" BorderBrush="{x:Null}">
+                        <DataGrid CellStyle="{DynamicResource DataGridCell}" RowStyle="{DynamicResource DataGridRowStyle1}" ColumnHeaderStyle="{DynamicResource DataGridColumnHeader}" x:Name="ScoreDataGrid" Background="{x:Null}" BorderBrush="{x:Null}" SelectionChanged="xScoreDataGrid_SelectionChanged" AutoGenerateColumns="False" CanUserAddRows="False">
                             <DataGrid.Columns>
-                                <DataGridTextColumn Header="#" IsReadOnly="True" CanUserResize="False" Width="auto"/>
-                                <DataGridTextColumn Header="Name" IsReadOnly="True" CanUserResize="False" Width="*"/>
-                                <DataGridTextColumn Header="X Score" IsReadOnly="True" CanUserResize="False" Width=".10*"/>
+                                <DataGridTextColumn Header="Name"  Binding="{Binding name}" CanUserResize="False" Width="*"/>
+                                <DataGridTextColumn Header="X Score" Binding="{Binding xScore}" CanUserResize="False" Width=".20*"/>
+                                <DataGridTextColumn Header="O Score" Binding="{Binding oScore}" CanUserResize="False" Width=".20*"/>
                             </DataGrid.Columns>
                         </DataGrid>
                     </Border>

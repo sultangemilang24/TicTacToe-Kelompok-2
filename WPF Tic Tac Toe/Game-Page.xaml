@@ -289,7 +289,7 @@
 
                     <!-- Button Cancel Save -->
                     <Border Grid.Row="2" CornerRadius="18,18,18,18" Background="#FFFF2F41" Width="150" Height="50" HorizontalAlignment="Left" Margin="50,0,0,0">
-                        <Button Background="{x:Null}" Foreground="White" BorderBrush="{x:Null}" Content="Cencel" FontSize="36" FontWeight="Bold" FontFamily="Consolas" Click="Button_Click_CencelSave"/>
+                        <Button Background="{x:Null}" Foreground="White" BorderBrush="{x:Null}" Content="Cancel" FontSize="36" FontWeight="Bold" FontFamily="Consolas" Click="Button_Click_CancelSave"/>
                     </Border>
                     <Border Grid.Column="1" Grid.Row="2" CornerRadius="18,18,18,18" Background="#FF1D3557" Width="150" Height="50" HorizontalAlignment="Right" Margin="0,0,50,0">
                         <Button Background="{x:Null}" Foreground="White" BorderBrush="{x:Null}" Content="Save" FontSize="36" FontWeight="Bold" FontFamily="Consolas" Click="Button_Click_Save"/>

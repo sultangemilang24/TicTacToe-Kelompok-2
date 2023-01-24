@@ -6,9 +6,27 @@ namespace WPF_Tic_Tac_Toe
     public partial class Setting_Page : Window
     {
         Game_Logic _GameLogic = new Game_Logic();
+
+        /*bool IsPlaying = Game_Logic.IsPlaying;*/
+
+        public static bool IsPlaying { get; private set; }
+
+        SoundPlayer sp = new SoundPlayer(Properties.Resources.POL_full_hand_short);
+
         public Setting_Page()
         {
             InitializeComponent();
+
+            if (IsPlaying == false)
+            {
+                imgDisable.Visibility = Visibility.Hidden;
+                imgEnable.Visibility = Visibility.Visible;
+            }
+            else
+            {
+                imgDisable.Visibility = Visibility.Visible;
+                imgEnable.Visibility = Visibility.Hidden;
+            }
         }
 
         private void btn_Back_Click(object sender, RoutedEventArgs e)
@@ -20,22 +38,26 @@ namespace WPF_Tic_Tac_Toe
 
         private void btn_Music_Clic(object sender, RoutedEventArgs e)
         {
-            bool IsPlaying = Game_Logic.IsPlaying;
-
-            if (IsPlaying)
+            if (IsPlaying == false)
             {
-                _GameLogic.sound();
+                /*_GameLogic.sound();*/
 
-                SoundPlayer sp = new SoundPlayer();
-                sp.SoundLocation = @".\sound\POL-full-hand-short.wav";
+                IsPlaying = true;
+
+                imgDisable.Visibility = Visibility.Visible;
+                imgEnable.Visibility = Visibility.Hidden;
+                                
                 sp.Stop();
             }
             else
             {
-                _GameLogic.sound();
+                /*_GameLogic.sound();*/
 
-                SoundPlayer sp = new SoundPlayer();
-                sp.SoundLocation = @".\sound\POL-full-hand-short.wav";
+                IsPlaying = false;
+
+                imgDisable.Visibility = Visibility.Hidden;
+                imgEnable.Visibility = Visibility.Visible;
+
                 sp.PlayLooping();
             }
         }

@@ -1,0 +1,9 @@
+E:\AMIKOM S1 Informatika\Pemrograman Lanjut\UAS PemrogLan\publish\sound\Click.wav
+E:\AMIKOM S1 Informatika\Pemrograman Lanjut\UAS PemrogLan\publish\sound\POL-full-hand-short.wav
+E:\AMIKOM S1 Informatika\Pemrograman Lanjut\UAS PemrogLan\publish\D3DCompiler_47_cor3.dll
+E:\AMIKOM S1 Informatika\Pemrograman Lanjut\UAS PemrogLan\publish\PenImc_cor3.dll
+E:\AMIKOM S1 Informatika\Pemrograman Lanjut\UAS PemrogLan\publish\PresentationNative_cor3.dll
+E:\AMIKOM S1 Informatika\Pemrograman Lanjut\UAS PemrogLan\publish\vcruntime140_cor3.dll
+E:\AMIKOM S1 Informatika\Pemrograman Lanjut\UAS PemrogLan\publish\wpfgfx_cor3.dll
+E:\AMIKOM S1 Informatika\Pemrograman Lanjut\UAS PemrogLan\publish\sni.dll
+E:\AMIKOM S1 Informatika\Pemrograman Lanjut\UAS PemrogLan\publish\WPF Tic Tac Toe.exe

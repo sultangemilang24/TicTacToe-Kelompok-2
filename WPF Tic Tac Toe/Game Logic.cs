@@ -13,7 +13,7 @@ namespace WPF_Tic_Tac_Toe
         private const string X = "X";
         private const string O = "O";
 
-        public static bool IsPlaying { get; set; } = true;
+        /*public static bool IsPlaying { get; private set; }*/
 
         public void SetNextPlayer()
         {
@@ -32,9 +32,9 @@ namespace WPF_Tic_Tac_Toe
             CurrentPlayer = X;
         }
 
-        public void sound()
+        /*public void sound()
         {
-            if (IsPlaying == true)
+            if (IsPlaying)
             {
                 IsPlaying = false;
             }
@@ -42,6 +42,6 @@ namespace WPF_Tic_Tac_Toe
             {
                 IsPlaying = true;
             }
-        }
+        }*/
     }
 }

@@ -91,6 +91,15 @@ namespace WPF_Tic_Tac_Toe.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized resource of type System.IO.UnmanagedMemoryStream similar to System.IO.MemoryStream.
+        /// </summary>
+        internal static System.IO.UnmanagedMemoryStream POL_full_hand_short {
+            get {
+                return ResourceManager.GetStream("POL_full_hand_short", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized resource of type System.Byte[].
         /// </summary>
         internal static byte[] setting {

@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\Kuliah\\Semester 7\\Pemrograman Lanjut\\UTS\\TicTacToe-Kelompok-2-main\\WPF Tic Tac Toe\\WPF Tic Tac Toe.csproj": {}
+    "D:\\Kuliah\\Semester 7\\Pemrograman Lanjut\\New folder\\TicTacToe-Kelompok-2\\WPF Tic Tac Toe\\WPF Tic Tac Toe.csproj": {}
   },
   "projects": {
-    "D:\\Kuliah\\Semester 7\\Pemrograman Lanjut\\UTS\\TicTacToe-Kelompok-2-main\\WPF Tic Tac Toe\\WPF Tic Tac Toe.csproj": {
+    "D:\\Kuliah\\Semester 7\\Pemrograman Lanjut\\New folder\\TicTacToe-Kelompok-2\\WPF Tic Tac Toe\\WPF Tic Tac Toe.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Kuliah\\Semester 7\\Pemrograman Lanjut\\UTS\\TicTacToe-Kelompok-2-main\\WPF Tic Tac Toe\\WPF Tic Tac Toe.csproj",
+        "projectUniqueName": "D:\\Kuliah\\Semester 7\\Pemrograman Lanjut\\New folder\\TicTacToe-Kelompok-2\\WPF Tic Tac Toe\\WPF Tic Tac Toe.csproj",
         "projectName": "WPF Tic Tac Toe",
-        "projectPath": "D:\\Kuliah\\Semester 7\\Pemrograman Lanjut\\UTS\\TicTacToe-Kelompok-2-main\\WPF Tic Tac Toe\\WPF Tic Tac Toe.csproj",
+        "projectPath": "D:\\Kuliah\\Semester 7\\Pemrograman Lanjut\\New folder\\TicTacToe-Kelompok-2\\WPF Tic Tac Toe\\WPF Tic Tac Toe.csproj",
         "packagesPath": "C:\\Users\\HANIF\\.nuget\\packages\\",
-        "outputPath": "D:\\Kuliah\\Semester 7\\Pemrograman Lanjut\\UTS\\TicTacToe-Kelompok-2-main\\WPF Tic Tac Toe\\obj\\",
+        "outputPath": "D:\\Kuliah\\Semester 7\\Pemrograman Lanjut\\New folder\\TicTacToe-Kelompok-2\\WPF Tic Tac Toe\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\HANIF\\AppData\\Roaming\\NuGet\\NuGet.Config",

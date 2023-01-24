@@ -14,7 +14,7 @@ namespace WPF_Tic_Tac_Toe
         Game_Logic _GameLogic = new Game_Logic();
         private int xWinsCount = 0;
         private int oWinsCount = 0;
-        SqlConnection connection = new SqlConnection(@"Data Source=DESKTOP-9FBPJJP\SQLEXPRESS;Initial Catalog=WPFTicTacToe;Integrated Security=True");
+        SqlConnection connection = new SqlConnection(@"Data Source=ADHITAMA;Initial Catalog=WPFTicTacToe;Integrated Security=True");
 
         DispatcherTimer _timerX;
         DispatcherTimer _timerO;
@@ -67,6 +67,8 @@ namespace WPF_Tic_Tac_Toe
             _timerO.Stop();
         }
 
+
+
         private void PlayingClick(object sender, RoutedEventArgs e)
         {
             var bt = (Button)sender;
@@ -78,6 +80,8 @@ namespace WPF_Tic_Tac_Toe
             bt.Foreground = Brushes.Black;
 
             content = _GameLogic.CurrentPlayer.ToString();
+
+            GameOver(bt.Content.ToString());
 
             if (content == "O")
             {
@@ -92,7 +96,7 @@ namespace WPF_Tic_Tac_Toe
                 _timerO.Start();
             }
 
-            GameOver(bt.Content.ToString());
+            
 
             _GameLogic.SetNextPlayer();
 
@@ -102,6 +106,7 @@ namespace WPF_Tic_Tac_Toe
         {
             if (Content == "X")
             {
+                MessageBox.Show("Times Up!", "Warning", MessageBoxButton.OK, MessageBoxImage.Error);
                 MessageBox.Show("Times Up!", "Warning", MessageBoxButton.OK, MessageBoxImage.Error);
                 MessageBox.Show("Player X Win!", "Congratulation", MessageBoxButton.OK, MessageBoxImage.Information);
 
@@ -128,8 +133,7 @@ namespace WPF_Tic_Tac_Toe
 
         private void GameOver(string btnContent)
         {
-
-            if((btn1.Content == btnContent & btn2.Content == btnContent & btn3.Content == btnContent) |
+            if ((btn1.Content == btnContent & btn2.Content == btnContent & btn3.Content == btnContent) |
                 (btn1.Content == btnContent & btn4.Content == btnContent & btn7.Content == btnContent) |
                 (btn1.Content == btnContent & btn5.Content == btnContent & btn9.Content == btnContent) |
                 (btn2.Content == btnContent & btn5.Content == btnContent & btn8.Content == btnContent) |
@@ -138,6 +142,8 @@ namespace WPF_Tic_Tac_Toe
                 (btn7.Content == btnContent & btn8.Content == btnContent & btn9.Content == btnContent) |
                 (btn3.Content == btnContent & btn5.Content == btnContent & btn7.Content == btnContent))
             {
+                _timerX.Stop();
+                _timerO.Stop();
                 if (btnContent == "X")
                 {
                     xWinsCount++;
@@ -163,6 +169,8 @@ namespace WPF_Tic_Tac_Toe
                      !btn3.IsEnabled && !btn4.IsEnabled && !btn5.IsEnabled &&
                      !btn7.IsEnabled && !btn8.IsEnabled && !btn9.IsEnabled)
             {
+                _timerX.Stop();
+                _timerO.Stop();
                 lbWinner.Content = "NO ONE WIN!";
                 lbWinner.Visibility = Visibility.Visible;
                 Wait1SecAndRestart();
@@ -200,6 +208,8 @@ namespace WPF_Tic_Tac_Toe
 
         private void Button_Click_NewGame(object sender, RoutedEventArgs e)
         {
+            _timerX.Stop();
+            _timerO.Stop();
             if (MessageBox.Show("Are you Sure to Restart the Game ?", "Question", MessageBoxButton.YesNo, MessageBoxImage.Warning) == MessageBoxResult.Yes)
             {
                 _GameLogic.NewGame();
@@ -208,8 +218,23 @@ namespace WPF_Tic_Tac_Toe
                 oWinsCount = 0;
                 lbxWin.Content = $"{xWinsCount}";
                 lboWin.Content = $"{oWinsCount}";
+                _timeX = TimeSpan.FromSeconds(4);
+                tbTimeX.Text = "";
+                _timeO = TimeSpan.FromSeconds(4);
+                tbTimeO.Text = "";
             }
-            else return;
+            else
+            {
+                if (content == "O")
+                {
+                    _timerX.Start();
+                }
+                else
+                {
+                    _timerO.Start();
+                }
+                return;
+            }
         }
 
         private void Button_Click_SaveGame(object sender, RoutedEventArgs e)
@@ -222,6 +247,9 @@ namespace WPF_Tic_Tac_Toe
             btnBack.IsHitTestVisible = false;
             btnHighScore.IsHitTestVisible = false;
             btnSetting.IsHitTestVisible = false;
+
+            _timerX.Stop();
+            _timerO.Stop();
         }
 
         public bool IsValid()
@@ -241,7 +269,6 @@ namespace WPF_Tic_Tac_Toe
 
         private void Button_Click_Save(object sender, RoutedEventArgs e)
         {
-
             if (IsValid())
             {
                 connection.Open();
@@ -273,7 +300,7 @@ namespace WPF_Tic_Tac_Toe
                     insertO.CommandType = CommandType.Text;
                     insertO.Parameters.AddWithValue("@name", OName.Text);
                     insertO.Parameters.AddWithValue("@oScore", oWinsCount);
-                                       
+
                     insertO.ExecuteNonQuery();
 
                     MessageBox.Show("Your score has ben Saved", "Succesfull", MessageBoxButton.OK, MessageBoxImage.Information);
@@ -304,7 +331,7 @@ namespace WPF_Tic_Tac_Toe
             }
         }
 
-        private void Button_Click_CencelSave(object sender, RoutedEventArgs e)
+        private void Button_Click_CancelSave(object sender, RoutedEventArgs e)
         {
             SaveMenu.Visibility = Visibility.Hidden;
 
@@ -314,11 +341,21 @@ namespace WPF_Tic_Tac_Toe
             btnBack.IsHitTestVisible = true;
             btnHighScore.IsHitTestVisible = true;
             btnSetting.IsHitTestVisible = true;
+            if (content == "O")
+            {
+                _timerX.Start();
+            }
+            else
+            {
+                _timerO.Start();
+            }
         }
 
         private void btn_Setting_Click(object sender, RoutedEventArgs e)
         {
             Setting_Page setting_Page = new Setting_Page();
+            _timerX.Stop();
+            _timerO.Stop();
             setting_Page.Show();
             Close();
         }
@@ -326,6 +363,8 @@ namespace WPF_Tic_Tac_Toe
         private void btn_Click_Back(object sender, RoutedEventArgs e)
         {
             MainWindow mainWindow = new MainWindow();
+            _timerX.Stop();
+            _timerO.Stop();
             mainWindow.Show();
             Close();
         }
@@ -333,6 +372,8 @@ namespace WPF_Tic_Tac_Toe
         private void btn_HighScore_Click(object sender, RoutedEventArgs e)
         {
             HighScore highScore = new HighScore();
+            _timerX.Stop();
+            _timerO.Stop();
             highScore.Show();
             Close();
         }
