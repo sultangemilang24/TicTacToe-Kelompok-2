@@ -4,17 +4,17 @@
 winexe
 C#
 .cs
-D:\Repository\OwO\TicTacToe-Kelompok-2\WPF Tic Tac Toe\obj\Debug\net6.0-windows\
+D:\Kuliah\Semester 7\Pemrograman Lanjut\UTS\TicTacToe-Kelompok-2-main\WPF Tic Tac Toe\obj\Debug\net6.0-windows\
 WPF_Tic_Tac_Toe
 none
 false
 TRACE;DEBUG;NET;NET6_0;NETCOREAPP
-D:\Repository\OwO\TicTacToe-Kelompok-2\WPF Tic Tac Toe\App.xaml
-3-283779791
+D:\Kuliah\Semester 7\Pemrograman Lanjut\UTS\TicTacToe-Kelompok-2-main\WPF Tic Tac Toe\App.xaml
+5-114166681
 2-1343396880
-8790215935
-2041885740067
-Game-Page.xaml;HomePage.xaml;Setting-Page.xaml;
+92027388165
+204453782811
+Game-Page.xaml;HighScore.xaml;HomePage.xaml;Setting-Page.xaml;text.xaml;
 
 False
 

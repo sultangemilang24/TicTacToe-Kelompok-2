@@ -1,19 +1,11 @@
 ﻿using System;
 using System.Data.SqlClient;
-using System.Collections.Generic;
 using System.Data;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
 using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
-using System.Media;
+using System.Windows.Threading;
 
 namespace WPF_Tic_Tac_Toe
 {
@@ -22,28 +14,116 @@ namespace WPF_Tic_Tac_Toe
         Game_Logic _GameLogic = new Game_Logic();
         private int xWinsCount = 0;
         private int oWinsCount = 0;
-        SqlConnection connection = new SqlConnection(@"Data Source=DESKTOP-400SBU6\SQLEXPRESS;Initial Catalog=WPFTicTacToe;Integrated Security=True");
+        SqlConnection connection = new SqlConnection(@"Data Source=DESKTOP-9FBPJJP\SQLEXPRESS;Initial Catalog=WPFTicTacToe;Integrated Security=True");
+
+        DispatcherTimer _timerX;
+        DispatcherTimer _timerO;
+        TimeSpan _timeX;
+        TimeSpan _timeO;
+
+        string content = "X";
+
+        bool TimesUp = false;
 
         public Game_Page()
         {
             InitializeComponent();
+
+            _timeX = TimeSpan.FromSeconds(4);
+
+            _timerX = new DispatcherTimer(new TimeSpan(0, 0, 1), DispatcherPriority.Normal, delegate
+            {
+                tbTimeX.Text = _timeX.ToString("c");
+                if (_timeX == TimeSpan.Zero)
+                {
+                    TimesUp = true;
+                    if (TimesUp)
+                    {
+                        WinnerTimesUp(content);
+                    }
+                    _timerX.Stop();
+                }
+                _timeX = _timeX.Add(TimeSpan.FromSeconds(-1));
+            }, Application.Current.Dispatcher);
+            _timerX.Stop();
+
+
+            _timeO = TimeSpan.FromSeconds(4);
+
+            _timerO = new DispatcherTimer(new TimeSpan(0, 0, 1), DispatcherPriority.Normal, delegate
+            {
+                tbTimeO.Text = _timeO.ToString("c");
+                if (_timeO == TimeSpan.Zero)
+                {
+                    TimesUp = true;
+                    if (TimesUp)
+                    {
+                        WinnerTimesUp(content);
+                    }
+                    _timerO.Stop();
+                }
+                _timeO = _timeO.Add(TimeSpan.FromSeconds(-1));
+            }, Application.Current.Dispatcher);
+            _timerO.Stop();
         }
 
         private void PlayingClick(object sender, RoutedEventArgs e)
         {
             var bt = (Button)sender;
+
             if (!String.IsNullOrWhiteSpace(bt.Content?.ToString())) return;
+
             bt.Content = _GameLogic.CurrentPlayer;
             bt.IsEnabled = false;
             bt.Foreground = Brushes.Black;
 
-            SoundPlayer sfx = new SoundPlayer(@".\sound\Click.wav");
-            sfx.Play();
+            content = _GameLogic.CurrentPlayer.ToString();
+
+            if (content == "O")
+            {
+                _timeX = TimeSpan.FromSeconds(4);
+                _timerO.Stop();
+                _timerX.Start();
+            }
+            else
+            {
+                _timeO = TimeSpan.FromSeconds(4);
+                _timerX.Stop();
+                _timerO.Start();
+            }
 
             GameOver(bt.Content.ToString());
 
             _GameLogic.SetNextPlayer();
 
+        }
+
+        private void WinnerTimesUp(string Content)
+        {
+            if (Content == "X")
+            {
+                MessageBox.Show("Times Up!", "Warning", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show("Player X Win!", "Congratulation", MessageBoxButton.OK, MessageBoxImage.Information);
+
+                xWinsCount++;
+                lbxWin.Content = $"{xWinsCount}";
+
+                TimesUp = false;
+
+                ResetButton();
+            }
+            else if (Content == "O")
+            {
+                MessageBox.Show("Times Up!", "Warning", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show("Player O Win!", "Congratulation", MessageBoxButton.OK, MessageBoxImage.Information);
+
+                oWinsCount++;
+                lboWin.Content = $"{oWinsCount}";
+
+                TimesUp = false;
+
+                ResetButton();
+            }
         }
 
         private void GameOver(string btnContent)
@@ -118,20 +198,6 @@ namespace WPF_Tic_Tac_Toe
             btn9.IsEnabled = true;
         }
 
-        private void btn_Setting_Click(object sender, RoutedEventArgs e)
-        {
-            Setting_Page setting_Page = new Setting_Page();
-            setting_Page.Show();
-            Close();
-        }
-        
-        private void btn_Click_Back(object sender, RoutedEventArgs e)
-        {
-            MainWindow mainWindow = new MainWindow();
-            mainWindow.Show();
-            Close();
-        }
-
         private void Button_Click_NewGame(object sender, RoutedEventArgs e)
         {
             if (MessageBox.Show("Are you Sure to Restart the Game ?", "Question", MessageBoxButton.YesNo, MessageBoxImage.Warning) == MessageBoxResult.Yes)
@@ -146,7 +212,7 @@ namespace WPF_Tic_Tac_Toe
             else return;
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void Button_Click_SaveGame(object sender, RoutedEventArgs e)
         {
             PlayerX_SaveGameScore.Content = xWinsCount;
             PlayerO_SaveGameScore.Content = oWinsCount;
@@ -175,8 +241,6 @@ namespace WPF_Tic_Tac_Toe
 
         private void Button_Click_Save(object sender, RoutedEventArgs e)
         {
-            SoundPlayer sfx = new SoundPlayer(@".\sound\Click.wav");
-            sfx.Play();
 
             if (IsValid())
             {
@@ -252,11 +316,25 @@ namespace WPF_Tic_Tac_Toe
             btnSetting.IsHitTestVisible = true;
         }
 
-        private void GamePage_Load(object sender, RoutedEventArgs e)
+        private void btn_Setting_Click(object sender, RoutedEventArgs e)
         {
-            SoundPlayer sp = new SoundPlayer();
-            sp.SoundLocation = @".\sound\POL-full-hand-short.wav";
-            sp.PlayLooping();
+            Setting_Page setting_Page = new Setting_Page();
+            setting_Page.Show();
+            Close();
+        }
+
+        private void btn_Click_Back(object sender, RoutedEventArgs e)
+        {
+            MainWindow mainWindow = new MainWindow();
+            mainWindow.Show();
+            Close();
+        }
+
+        private void btn_HighScore_Click(object sender, RoutedEventArgs e)
+        {
+            HighScore highScore = new HighScore();
+            highScore.Show();
+            Close();
         }
     }
 }

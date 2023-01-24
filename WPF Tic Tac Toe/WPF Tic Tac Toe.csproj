@@ -9,6 +9,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="App.xaml.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
     <None Remove="sound\Click.wav" />
   </ItemGroup>
 
@@ -22,13 +26,17 @@
   </ItemGroup>
 
   <ItemGroup>
+    <DesignData Include="App.xaml.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="EntityFramework" Version="6.4.4" />
     <PackageReference Include="MySql.Data" Version="8.0.31" />
   </ItemGroup>
 
   <ItemGroup>
     <Resource Include="img\back.png">
-      <CopyToOutputDirectory></CopyToOutputDirectory>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
     <Resource Include="img\logo.png" />
     <Resource Include="img\music.png">

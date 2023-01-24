@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WPF_Tic_Tac_Toe"
         mc:Ignorable="d"
-        Title="Game_Page" Width="1280" Height="720"  WindowStartupLocation="CenterScreen" Loaded="GamePage_Load">
+        Title="Game_Page" Width="1280" Height="720"  WindowStartupLocation="CenterScreen">
     <Window.Resources>
         <Style x:Key="FocusVisual1">
             <Setter Property="Control.Template">
@@ -145,7 +145,7 @@
     <Grid>
 
         <!-- Player Score -->
-        <Grid HorizontalAlignment="Center" VerticalAlignment="Top" Width="450" Height="90" Margin="0,23,0,0" >
+        <Grid HorizontalAlignment="Center" VerticalAlignment="Top" Width="700" Height="90" Margin="0,20,0,0">
             <Grid HorizontalAlignment="Left" VerticalAlignment="Center" Width="190" Height="100">
                 <Border BorderBrush="#FF1D3557" Width="90" Height="90" Background="#FF1D3557" HorizontalAlignment="Left" VerticalAlignment="Center" CornerRadius="15,15,15,15">
                     <TextBlock TextWrapping="Wrap" Text="X" Foreground="White" FontFamily="Consolas" FontSize="90" HorizontalAlignment="Center" VerticalAlignment="Center"/>
@@ -164,6 +164,42 @@
                 </Border>
             </Grid>
 
+        </Grid>
+
+        <!-- Count Down Player O -->
+        <Grid HorizontalAlignment="Left" VerticalAlignment="Top" Width="200" Height="100" Margin="1005,180,0,0">
+            <Border Background="White" BorderBrush="{x:Null}" CornerRadius="15,15,15,15" Width="200" Height="100">
+                <Border.Effect>
+                    <DropShadowEffect BlurRadius="20" Direction ="-90" RenderingBias ="Quality" ShadowDepth =".7" Color ="Black"/>
+                </Border.Effect>
+            </Border>
+
+            <Border Background="#FFFF2F41" BorderBrush="{x:Null}" Width="200" Height="50" VerticalAlignment="Top" CornerRadius="15,15,0,0">
+                <TextBlock Text="Player Time left" FontFamily="Consolas" FontSize="22" FontWeight="Bold" Foreground="White" Width="200" Height="50" 
+                       TextWrapping="Wrap" TextAlignment="Center" Padding="0,12,0,0"/>
+            </Border>
+            <Border Background="White" BorderBrush="{x:Null}" Width="200" Height="50" VerticalAlignment="Bottom" CornerRadius="0,0,15,15">
+                <TextBlock x:Name="tbTimeO" Width="200" Height="50" Foreground="#FFFF2F41"
+                           FontFamily="Consolas" FontSize="30" FontWeight="Bold" TextWrapping="Wrap" TextAlignment="Center"/>
+            </Border>
+        </Grid>
+
+        <!-- Count Down Player X -->
+        <Grid HorizontalAlignment="Left" VerticalAlignment="Top" Width="200" Height="100" Margin="80,180,0,0">
+            <Border Background="White" BorderBrush="{x:Null}" CornerRadius="15,15,15,15" Width="200" Height="100">
+                <Border.Effect>
+                    <DropShadowEffect BlurRadius="20" Direction ="-90" RenderingBias ="Quality" ShadowDepth =".7" Color ="Black"/>
+                </Border.Effect>
+            </Border>
+
+            <Border Background="#FF1D3557" BorderBrush="{x:Null}" Width="200" Height="50" VerticalAlignment="Top" CornerRadius="15,15,0,0">
+                <TextBlock Text="Player Time left" FontFamily="Consolas" FontSize="22" FontWeight="Bold" Foreground="White" Width="200" Height="50" 
+                       TextWrapping="Wrap" TextAlignment="Center" Padding="0,12,0,0"/>
+            </Border>
+            <Border Background="White" BorderBrush="{x:Null}" Width="200" Height="50" VerticalAlignment="Bottom" CornerRadius="0,0,15,15">
+                <TextBlock x:Name="tbTimeX" Width="200" Height="50" Foreground="#FF1D3557"
+                           FontFamily="Consolas" FontSize="30" FontWeight="Bold" TextWrapping="Wrap" TextAlignment="Center"/>
+            </Border>
         </Grid>
 
         <!-- Player Playing Board -->
@@ -265,8 +301,8 @@
         <!-- Button Bottom Form -->
         <Grid HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="0,0,0,25" Height="120" Width="534">
             <Button Style="{DynamicResource ButtonStyle2}" Content="New Game" Background="#FFFF2F41" Foreground="#FFF9FEFF" HorizontalAlignment="Left" VerticalAlignment="Top" Click="Button_Click_NewGame"/>
-            <Button Style="{DynamicResource ButtonStyle2}" Content="Save Game" Background="#FF1D3557" Foreground="#FFF9FEFF" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="301,0,0,0" Click="Button_Click"/>
-            <Button x:Name="btnHighScore" Style="{DynamicResource ButtonStyle2}" Content="High Score" Background="#F9FEFF" Foreground="#1D3557"  HorizontalAlignment="Center" VerticalAlignment="Bottom" />
+            <Button Style="{DynamicResource ButtonStyle2}" Content="Save Game" Background="#FF1D3557" Foreground="#FFF9FEFF" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="301,0,0,0" Click="Button_Click_SaveGame"/>
+            <Button x:Name="btnHighScore" Style="{DynamicResource ButtonStyle2}" Content="High Score" Background="#F9FEFF" Foreground="#1D3557"  HorizontalAlignment="Center" VerticalAlignment="Bottom" Click="btn_HighScore_Click"/>
         </Grid>
 
         <Button x:Name="btnBack" Style="{DynamicResource ButtonStyle1}" HorizontalAlignment="Left" Height="80" Width="80"  Margin="20,0,0,20" Click="btn_Click_Back">
